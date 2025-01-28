@@ -16,6 +16,9 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "-",
 });
 
+
+
+
 const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
 const voiceID = "eVItLK1UvXctxuaRV2Oq";
 
@@ -23,6 +26,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const port = 3000;
+
+const corsOptions = {
+  origin: 'https://ai-humonoid-asisitant.vercel.app', // Allow your frontend's domain
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+
 
 // Set ffmpeg path to the static binary
 ffmpeg.setFfmpegPath(ffmpegStatic);
@@ -202,11 +214,6 @@ const audioFileToBase64 = async (file) => {
 };
 
 
-app.use(cors({
-  origin: 'https://ai-humonoid-asisitant.vercel.app', // The correct frontend URL
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
-}));
 
 
 app.listen(port, () => {
