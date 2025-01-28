@@ -201,6 +201,14 @@ const audioFileToBase64 = async (file) => {
   return data.toString("base64");
 };
 
+
+app.use(cors({
+  origin: 'https://ai-humonoid-asisitant.vercel.app', // The correct frontend URL
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+}));
+
+
 app.listen(port, () => {
   console.log(`Humonoid AI listening on port ${port}`);
 });
