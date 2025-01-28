@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "soundFile": "D:\\Ai chat Bot\\Chat Bot Backend\\audios\\Need_Api.ogg",
+    "duration": 2.22
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.10, "value": "X" },
+    { "start": 0.10, "end": 0.20, "value": "F" },
+    { "start": 0.20, "end": 0.34, "value": "B" },
+    { "start": 0.34, "end": 0.48, "value": "F" },
+    { "start": 0.48, "end": 0.69, "value": "C" },
+    { "start": 0.69, "end": 0.83, "value": "B" },
+    { "start": 0.83, "end": 0.97, "value": "F" },
+    { "start": 0.97, "end": 1.11, "value": "C" },
+    { "start": 1.11, "end": 1.19, "value": "A" },
+    { "start": 1.19, "end": 1.41, "value": "B" },
+    { "start": 1.41, "end": 1.90, "value": "C" },
+    { "start": 1.90, "end": 1.97, "value": "B" },
+    { "start": 1.97, "end": 2.22, "value": "X" }
+  ]
+}
