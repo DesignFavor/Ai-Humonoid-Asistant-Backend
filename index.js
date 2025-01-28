@@ -28,12 +28,17 @@ app.use(cors());
 const port = 3000;
 
 const corsOptions = {
-  origin: 'https://ai-humonoid-asisitant.vercel.app', // Allow your frontend's domain
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
+  origin: "https://ai-humonoid-asisitant.vercel.app", // Frontend URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // If you're using cookies or authorization headers
 };
 
+// Apply CORS middleware
 app.use(cors(corsOptions));
+
+// Handle CORS preflight requests for all routes
+app.options('*', cors(corsOptions)); // This handles preflight requests
 
 
 // Set ffmpeg path to the static binary
