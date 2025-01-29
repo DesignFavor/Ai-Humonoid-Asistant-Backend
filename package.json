@@ -1,7 +1,7 @@
 {
-  "name": "r3f-virtual-girlfriend-backend",
+  "name": "Design-Favor-production",
   "version": "1.0.0",
-  "description": "Backend for the virtual girlfriend app",
+  "description": "Design-Favor-production",
   "main": "index.js",
   "type": "module",
   "scripts": {

@@ -16,33 +16,18 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "-",
 });
 
+
+
+
 const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
 const voiceID = "eVItLK1UvXctxuaRV2Oq";
 
 const app = express();
 app.use(express.json());
-
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://ai-humonoid-asisitant.vercel.app",
-];
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
-
+app.use(cors());
 const port = 3000;
+
+
 
 // Set ffmpeg path to the static binary
 ffmpeg.setFfmpegPath(ffmpegStatic);
@@ -76,7 +61,7 @@ const lipSyncMessage = async (message) => {
   console.log(`Conversion done in ${new Date().getTime() - time}ms`);
 
   // Path to rhubarb.exe (Windows compatible)
-  const rhubarbPath = path.join("bin", "rhubarb.exe");
+  const rhubarbPath = path.join("rhubarb", "rhubarb.exe");
   const jsonOutput = `audios/message_${message}.json`;
 
   // Execute rhubarb.exe with phonetic lip-sync
@@ -220,6 +205,9 @@ const audioFileToBase64 = async (file) => {
   const data = await fs.readFile(file);
   return data.toString("base64");
 };
+
+
+
 
 app.listen(port, () => {
   console.log(`Humonoid AI listening on port ${port}`);
