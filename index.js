@@ -16,17 +16,33 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "-",
 });
 
-
-
-
 const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
 const voiceID = "eVItLK1UvXctxuaRV2Oq";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-const port = 3000;
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://ai-humonoid-asisitant.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
+const port = 3000;
 
 // Set ffmpeg path to the static binary
 ffmpeg.setFfmpegPath(ffmpegStatic);
@@ -204,9 +220,6 @@ const audioFileToBase64 = async (file) => {
   const data = await fs.readFile(file);
   return data.toString("base64");
 };
-
-
-
 
 app.listen(port, () => {
   console.log(`Humonoid AI listening on port ${port}`);
