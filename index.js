@@ -26,15 +26,22 @@ const app = express();
 app.use(express.json());
 // app.use(cors());
 const port = 3000;
-const allowedOrigins = '*';
+const allowedOrigins = ['https://ai-humonoid-asisitant.vercel.app'];
 
 const corsOptionsAll = {
   optionsSuccessStatus: 202,
-  origin: allowedOrigins,
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 };
 
 app.use(cors(corsOptionsAll));
+
 
 
 // Set ffmpeg path to the static binary
