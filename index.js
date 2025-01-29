@@ -24,9 +24,17 @@ const voiceID = "eVItLK1UvXctxuaRV2Oq";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 const port = 3000;
+app.use(cors({
+  origin: "https://ai-humonoid-asisitant.vercel.app", // Allow only this origin
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+  credentials: true // If sending cookies or Authorization headers
+}));
 
+// Handle preflight requests
+app.options("*", cors());
 
 
 // Set ffmpeg path to the static binary
