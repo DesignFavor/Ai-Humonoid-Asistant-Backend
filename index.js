@@ -26,12 +26,7 @@ const app = express();
 app.use(express.json());
 // app.use(cors());
 const port = 3000;
-app.use(cors({
-  origin: "https://ai-humonoid-asisitant.vercel.app", // Allow only this origin
-  methods: "GET,POST,PUT,DELETE,OPTIONS",
-  allowedHeaders: "Content-Type,Authorization",
-  credentials: true // If sending cookies or Authorization headers
-}));
+app.use(cors({ origin: 'https://ai-humonoid-asisitant.vercel.app' }));
 
 // Handle preflight requests
 app.options("*", cors());
