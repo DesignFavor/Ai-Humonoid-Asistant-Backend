@@ -8,8 +8,8 @@ import { promises as fs } from "fs";
 import OpenAI from "openai";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegStatic from "ffmpeg-static"; // Add static ffmpeg binary
-import path from "path"; // Path module for cross-platform path management
-
+import path from "path"; // Path module for cross-platform path management 
+ 
 dotenv.config();
 
 const openai = new OpenAI({
