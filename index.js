@@ -26,7 +26,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "-",
 });
 
- 
+  
 
 
 const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
