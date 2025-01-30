@@ -8,8 +8,8 @@ import { promises as fs } from "fs";
 import OpenAI from "openai";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegStatic from "ffmpeg-static"; // Add static ffmpeg binary
-import path from "path"; // Path module for cross-platform path management   
-  
+import path from "path"; // Path module for cross-platform path management 
+ 
 dotenv.config();
 
 const openai = new OpenAI({
@@ -26,7 +26,6 @@ const app = express();
 app.use(express.json());
 // app.use(cors());
 const port = 3000;
-const allowedOrigins = ['https://ai-humonoid-asisitant.vercel.app'];
 
 const corsOptions = {
   credentials: true,
@@ -41,7 +40,7 @@ app.use(cors(corsOptions));
 ffmpeg.setFfmpegPath(ffmpegStatic);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello World!--👩‍💻");
 });
 
 app.get("/voices", async (req, res) => {
