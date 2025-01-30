@@ -20,7 +20,7 @@ const port = 3000;
 const corsOptions = {
   origin: ['https://ai-humonoid-asisitant.vercel.app/', 'http://localhost:5173'] // Whitelist the domains you want to allow
 };
-
+  
 app.use(cors(corsOptions));
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "-",
