@@ -9,7 +9,8 @@ import OpenAI from "openai";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegStatic from "ffmpeg-static"; // Add static ffmpeg binary
 import path from "path"; // Path module for cross-platform path management   
- 
+
+import bodyParser from "body-parser";  // Import body-parser
 dotenv.config();
 
 const openai = new OpenAI({
@@ -23,7 +24,8 @@ const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
 const voiceID = "eVItLK1UvXctxuaRV2Oq";
 
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json());
+// app.use(express.json());
 // app.use(cors());
 const port = 3000;
 
