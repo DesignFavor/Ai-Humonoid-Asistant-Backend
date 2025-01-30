@@ -28,19 +28,12 @@ app.use(express.json());
 const port = 3000;
 const allowedOrigins = ['https://ai-humonoid-asisitant.vercel.app'];
 
-const corsOptionsAll = {
-  optionsSuccessStatus: 202,
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+const corsOptions = {
   credentials: true,
+  origin: ['https://ai-humonoid-asisitant.vercel.app', 'http://localhost:5173'] // Whitelist the domains you want to allow
 };
 
-app.use(cors(corsOptionsAll));
+app.use(cors(corsOptions));
 
 
 
