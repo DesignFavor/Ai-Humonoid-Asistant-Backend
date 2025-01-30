@@ -13,6 +13,15 @@ import path from "path"; // Path module for cross-platform path management
 import bodyParser from "body-parser";  // Import body-parser
 dotenv.config();
 
+const app = express();
+app.use(bodyParser.json());
+const port = 3000;
+
+const corsOptions = {
+  origin: ['https://ai-humonoid-asisitant.vercel.app/', 'http://localhost:5173'] // Whitelist the domains you want to allow
+};
+
+app.use(cors(corsOptions));
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "-",
 });
@@ -23,17 +32,9 @@ const openai = new OpenAI({
 const elevenLabsApiKey = process.env.ELEVEN_LABS_API_KEY;
 const voiceID = "eVItLK1UvXctxuaRV2Oq";
 
-const app = express();
-app.use(bodyParser.json());
 // app.use(express.json());
 // app.use(cors());
-const port = 3000;
 
-const corsOptions = {
-  origin: ['https://ai-humonoid-asisitant.vercel.app/', 'http://localhost:5173'] // Whitelist the domains you want to allow
-};
-
-app.use(cors(corsOptions));
 
 
 
